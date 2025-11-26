@@ -1,0 +1,60 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.5.7'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.ksmartpia'
+version = '0.0.1-SNAPSHOT'
+description = 'sis-batch'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// ✅ Spring Boot Core
+	implementation 'org.springframework.boot:spring-boot-starter'
+
+	// ✅ DB 접근용 (JdbcTemplate)
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+
+	// ✅ PostgreSQL 드라이버
+	runtimeOnly 'org.postgresql:postgresql'
+
+	// ✅ Lombok (편의 어노테이션)
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	// ✅ Thumbnailator (이미지 압축 핵심 라이브러리)
+	implementation 'net.coobird:thumbnailator:0.4.20'
+
+	// ✅ 선택: 대량 처리 시 Spring Batch 사용 가능
+	implementation 'org.springframework.boot:spring-boot-starter-batch'
+
+	// ✅ 선택: 파일 처리 유틸 (Apache Commons IO)
+	implementation 'commons-io:commons-io:2.16.1'
+
+	// ✅ 테스트
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+clean {
+	delete file('src/main/generated')
+}

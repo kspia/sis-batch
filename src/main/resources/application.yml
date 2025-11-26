@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    dms:
+      jdbc-url: jdbc:postgresql://dms.ksmartpia.net:5432/bo_dms_op
+      username: root
+      password: kspia01!@#
+      driver-class-name: org.postgresql.Driver
+    sis:
+      jdbc-url: jdbc:postgresql://192.168.20.51:5432/kspia_sis_op
+      username: root
+      password: kspia01!@#
+      driver-class-name: org.postgresql.Driver
+
+  batch:
+    job:
+      enabled: true
+    jdbc:
+      initialize-schema: never  # BATCH_* 테이블을 직접 생성했을 경우
+
+logging:
+  level:
+    root: INFO
