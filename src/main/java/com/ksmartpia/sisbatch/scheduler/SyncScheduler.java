@@ -21,7 +21,7 @@ public class SyncScheduler {
     private final Job modemSyncJob;
     private final SyncMetaRepository syncMetaRepository;
 
-    @Scheduled(cron = "0 58 15 * * *")
+    @Scheduled(cron = "0 0 */4 * * *")
     public void runModemSyncJob() throws Exception {
 
         LocalDateTime lastSyncTime = syncMetaRepository.getLastSyncTime("MODEM_SYNC");
