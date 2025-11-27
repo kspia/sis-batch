@@ -13,7 +13,7 @@ public class SisModemWriter {
 
     @Bean
     public JdbcBatchItemWriter<ModemEquip> modemEquipWriter(
-        @Qualifier("sisDataSource") DataSource dataSource) {
+        @Qualifier("dataSource") DataSource dataSource) {
 
         return new JdbcBatchItemWriterBuilder<ModemEquip>()
             .sql("""

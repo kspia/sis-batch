@@ -18,7 +18,7 @@ public class DmsModemReader {
     @Bean
     @StepScope
     public JdbcCursorItemReader<ModemEquip> modemEquipReader(
-        @Qualifier("dataSource") DataSource dataSource,
+        @Qualifier("dmsDataSource") DataSource dataSource,
         @Value("#{jobParameters['lastSyncTime']}") String lastSyncTimeStr
     ) {
         LocalDateTime lastSyncTime =
